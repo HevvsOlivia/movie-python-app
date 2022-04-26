@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, render_template
-#import urllib.request, json
 from controllers import movies
 from flask_cors import CORS
 from werkzeug import exceptions
@@ -14,8 +13,17 @@ def welcome():
 
 @app.route('/movies', methods = ['GET'])
 def movies_handler():
-    resp, code = movies.index(request)
-    return jsonify(resp), code
+    data = movies.index(request)
+    movie =[]
+    for m in data[0]:
+        m = {
+            'title': m['title'],
+            'overview': m['overview'],
+            'backdrop_path': m['backdrop_path']
+        }
+        if m['backdrop_path'] != None: 
+            movie.append(m)
+    return render_template('index.html', data = movie)
 
 @app.route('/movies/<int:movie_id>', methods = ['GET'])
 def movie_handler(movie_id):
