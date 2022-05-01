@@ -4,7 +4,7 @@ import urllib.request, json
 
 
 def index(req):
-    url = ('https://api.themoviedb.org/3/movie/popular?api_key=3e75bf46bc720cd7c4d444e109c461d9')
+    url = ('https://api.themoviedb.org/3/movie/popular?api_key=')
     response = get(url)
     data = response.json()
     return [m for m in data["results"]], 200
