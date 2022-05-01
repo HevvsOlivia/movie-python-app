@@ -14,7 +14,7 @@ def show(req, id):
 
 def find_by_id(id):
     try:
-        url = (f'https://api.themoviedb.org/3/movie/{id}?api_key=3e75bf46bc720cd7c4d444e109c461d9')
+        url = (f'https://api.themoviedb.org/3/movie/{id}?api_key=')
         response = get(url)
         data = response.json()
         return next(movie for movie in movies if movie['id'] == id)
@@ -48,7 +48,7 @@ def find_by_id(id):
 
 
 # def index(req):
-#     url = ('https://api.themoviedb.org/3/movie/popular?api_key=3e75bf46bc720cd7c4d444e109c461d9')
+#     url = ('https://api.themoviedb.org/3/movie/popular?api_key=')
 #     response = urllib.request.urlopen(url)
 #     data = response.read()
 #     dict = json.loads(data)
